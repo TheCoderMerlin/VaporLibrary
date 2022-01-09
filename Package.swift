@@ -6,6 +6,9 @@ let package = Package(
     platforms: [
        .macOS(.v10_15)
     ],
+    products: [
+      .library(name: "VaporLibrary", type: .dynamic, targets: ["VaporLibrary"])
+    ],
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
@@ -15,7 +18,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "App",
+            name: "VaporLibrary",
             dependencies: [
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentMySQLDriver", package: "fluent-mysql-driver"),
@@ -28,11 +31,6 @@ let package = Package(
                 // builds. See <https://github.com/swift-server/guides/blob/main/docs/building.md#building-for-production> for details.
                 .unsafeFlags(["-cross-module-optimization"], .when(configuration: .release))
             ]
-        ),
-        .executableTarget(name: "Run", dependencies: [.target(name: "App")]),
-        .testTarget(name: "AppTests", dependencies: [
-            .target(name: "App"),
-            .product(name: "XCTVapor", package: "vapor"),
-        ])
+        )
     ]
 )
