@@ -11,10 +11,10 @@ let package = Package(
     ],
     dependencies: [
         // 💧 A server-side Swift web framework.
-        .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
-        .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
-        .package(url: "https://github.com/vapor/fluent-mysql-driver.git", from: "4.0.0"),
-        .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),
+      .package(url: "https://github.com/vapor/vapor.git", .exact("4.55.3")),
+      .package(url: "https://github.com/vapor/fluent.git", .exact("4.4.0")),
+      .package(url: "https://github.com/vapor/fluent-mysql-driver.git", .exact("4.0.2")),
+      .package(url: "https://github.com/vapor/leaf.git", .exact("4.1.5")),
     ],
     targets: [
         .target(
