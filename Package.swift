@@ -1,20 +1,17 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.7
 import PackageDescription
 
 let package = Package(
     name: "VaporLibrary",
-    platforms: [
-       .macOS(.v10_15)
-    ],
     products: [
       .library(name: "VaporLibrary", type: .dynamic, targets: ["VaporLibrary"])
     ],
     dependencies: [
         // 💧 A server-side Swift web framework.
-      .package(url: "https://github.com/vapor/vapor.git", .exact("4.55.3")),
-      .package(url: "https://github.com/vapor/fluent.git", .exact("4.4.0")),
-      .package(url: "https://github.com/vapor/fluent-mysql-driver.git", .exact("4.0.2")),
-      .package(url: "https://github.com/vapor/leaf.git", .exact("4.1.5")),
+      .package(url: "https://github.com/vapor/vapor.git", from: "4.66.1"),
+      .package(url: "https://github.com/vapor/fluent.git", from: "4.5.0"),
+      .package(url: "https://github.com/vapor/fluent-mysql-driver.git", from: "4.1.0"),
+      .package(url: "https://github.com/vapor/leaf.git", from: "4.2.2"),
     ],
     targets: [
         .target(
