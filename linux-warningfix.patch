@@ -1,0 +1,25 @@
+Expored Patch to fix warning for preconcurrency on Linux.
+https://github.com/vapor/vapor/blob/28099c59232b2a821c8336c8a6c3e243b16bcb17/Sources/Vapor/Utilities/RFC1123.swift
+
+To use this patch, checkout all sources. (Building one time should do)
+Then navigate to the checkout. Located under .build/checkouts/vapor/ and then move this and apply the patch.
+
+Finally, Rebuild.
+
+diff --git a/Sources/Vapor/Utilities/RFC1123.swift b/Sources/Vapor/Utilities/RFC1123.swift
+index 679ad80a1..a366a90fb 100644
+--- a/Sources/Vapor/Utilities/RFC1123.swift
++++ b/Sources/Vapor/Utilities/RFC1123.swift
+@@ -9,7 +9,12 @@
+ @preconcurrency import WinSDK
+ #endif
+ #endif
++
++#if os(Linux)
++@preconcurrency import Foundation
++#else
+ import Foundation
++#endif
+ import NIOPosix
+ import NIOCore
+ import NIOConcurrencyHelpers
